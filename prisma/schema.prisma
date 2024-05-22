@@ -20,7 +20,7 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  todos      Todo[]
+  todos     Todo[]
 }
 
 model Account {
@@ -89,4 +89,5 @@ model Todo {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  doneAt    DateTime?
 }
