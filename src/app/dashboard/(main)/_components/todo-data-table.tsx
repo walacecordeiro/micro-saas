@@ -195,7 +195,7 @@ export function TodoDataTable({ data }: TodoDataTable) {
      </DropdownMenuContent>
     </DropdownMenu>
    </div>
-   <div className="rounded-md border">
+   <div className="rounded-md border overflow-auto h-[60vh]">
     <Table>
      <TableHeader>
       {table.getHeaderGroups().map((headerGroup) => (
@@ -237,9 +237,14 @@ export function TodoDataTable({ data }: TodoDataTable) {
    </div>
    <div className="flex items-center justify-end space-x-2 py-4">
     <div className="flex-1 text-sm text-muted-foreground">
-     {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length}{" "}
-     row(s) selected.
+     {table.getFilteredRowModel().rows.filter((row) => row.original.doneAt).length}{" "}
+     {table.getFilteredRowModel().rows.filter((row) => row.original.doneAt).length === 1
+      ? "tarefa concluída"
+      : "tarefas concluídas"}{" "}
+     de {table.getFilteredRowModel().rows.length}{" "}
+     {table.getFilteredRowModel().rows.length === 1 ? "tarefa" : "tarefas"}
     </div>
+
     <div className="space-x-2">
      <Button
       variant="outline"
@@ -247,7 +252,7 @@ export function TodoDataTable({ data }: TodoDataTable) {
       onClick={() => table.previousPage()}
       disabled={!table.getCanPreviousPage()}
      >
-      Previous
+      Anterior
      </Button>
      <Button
       variant="outline"
@@ -255,7 +260,7 @@ export function TodoDataTable({ data }: TodoDataTable) {
       onClick={() => table.nextPage()}
       disabled={!table.getCanNextPage()}
      >
-      Next
+      Próxima
      </Button>
     </div>
    </div>

@@ -25,7 +25,9 @@ export function MainSidebar({ user }: MainSidebarProps) {
  const pathName = usePathname();
 
  const isActive = (path: string) => {
-  return pathName === path;
+  const normalizedPathName = pathName.split("/")[2];
+  const normalizedPath = path.split("/")[2];
+  return normalizedPathName === normalizedPath;
  };
 
  return (
@@ -37,11 +39,14 @@ export function MainSidebar({ user }: MainSidebarProps) {
    <DashboardSidebarMain className="flex flex-col flex-grow">
     <DashboardSidebarNav>
      <DashboardSidebarNavMain>
-      <DashboardSidebarNavLink href="/app" active={isActive("/app")}>
+      <DashboardSidebarNavLink href="/dashboard" active={isActive("/dashboard")}>
        <HomeIcon className="w-3 h-3 mr-3" />
        Tarefas
       </DashboardSidebarNavLink>
-      <DashboardSidebarNavLink href="/app/settings" active={isActive("/app/settings")}>
+      <DashboardSidebarNavLink
+       href="/dashboard/configuracoes"
+       active={isActive("/dashboard/configuracoes")}
+      >
        <MixerVerticalIcon className="w-3 h-3 mr-3" />
        Configurações
       </DashboardSidebarNavLink>
@@ -60,7 +65,7 @@ export function MainSidebar({ user }: MainSidebarProps) {
    </DashboardSidebarMain>
 
    <DashboardSidebarFooter>
-    <UserDropdown user={user}/>
+    <UserDropdown user={user} />
    </DashboardSidebarFooter>
   </DashboardSidebar>
  );
