@@ -59,9 +59,9 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
        name="name"
        render={({ field }) => (
         <FormItem>
-         <FormLabel>Nome</FormLabel>
+         <FormLabel>Nome do perfil</FormLabel>
          <FormControl>
-          <Input placeholder="Insira seu nome completo..." {...field} />
+          <Input placeholder="Insira o nome que desejar" {...field} />
          </FormControl>
          <FormMessage />
         </FormItem>
@@ -83,7 +83,7 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
        name="email"
        render={({ field }) => (
         <FormItem>
-         <FormLabel>Email</FormLabel>
+         <FormLabel>Email atual</FormLabel>
          <FormControl>
           <Input disabled placeholder="Insira seu email..." {...field} />
          </FormControl>
